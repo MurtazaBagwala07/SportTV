@@ -1,0 +1,30 @@
+.footer-container{
+    width:100%;
+    background-color:var(--navbar-color);
+    color: var(--text-color);
+    height:8rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:0.8rem;
+}
+
+.footer-desc{
+    font-size:1.2rem;
+    font-weight: 500;
+}
+
+.footer-socials{
+    display:flex;
+    flex-direction: row;
+    gap:1.5rem;
+}
+
+.footer-icon{
+    font-size:1.5rem;
+}
+
+.footer-copyright{
+    font-size: 1rem;
+}
