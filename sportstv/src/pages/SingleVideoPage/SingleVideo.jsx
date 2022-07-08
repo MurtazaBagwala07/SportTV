@@ -29,7 +29,7 @@ export const SingleVideo = () => {
                 <h2 className='video-title'>
                     {video.title}
                 </h2>
-                <h5 className='video-creator'>
+                <h5 className='video-created'>
                     {video.creator}
                 </h5>
                 <small className='video-date'>

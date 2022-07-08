@@ -30,7 +30,7 @@ const DataProvider=({children})=>{
                 const categoryData= await getCategoryService();
                 if(categoryData.status===200){
                     dispatch({
-                        type: ACTION_TYPE.CATEGORIES,
+                        type: ACTION_TYPE.INITIAL_CAT,
                         payload:categoryData.data.categories,
                     })
                 }

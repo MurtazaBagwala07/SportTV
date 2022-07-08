@@ -7,6 +7,8 @@ export const InitialState={
     watchLater:[],
     history: [],
     playlist: [],
+    sortBy:'',
+    search:'',
 }
 
 export const DataReducer=(state,action)=>{
@@ -16,15 +18,33 @@ export const DataReducer=(state,action)=>{
                 ...state, videos:action.payload,
             }
         }
-    
-        case ACTION_TYPE.CATEGORIES:{
+
+        case ACTION_TYPE.INITIAL_CAT:{
             return {
                 ...state, categories:[
                     ...action.payload.map((cat) => ({
                         ...cat,
-                        isActive: cat.categotyName === 'ALL' ? true : false,
+                        isActive: cat.categoryName === 'All' ? true : false,
                       })),
                 ],
+            }
+        }
+    
+        case ACTION_TYPE.CATEGORIES:{
+            return {
+                ...state, categories:action.payload,
+            }
+        }
+
+        case ACTION_TYPE.SORTBY:{
+            return {
+                ...state,sortBy:action.payload
+            }
+        }
+
+        case ACTION_TYPE.SEARCH:{
+            return {
+                ...state,search:action.payload
             }
         }
 

@@ -14,6 +14,7 @@
 
 .fa-search{
     color: var(--primary-color);
+    cursor: pointer;
 }
 
 .ecom-nav-action-btn{

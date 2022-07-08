@@ -1,37 +1,57 @@
 import React from 'react'
-import {Header, Sidebar,VideoCard} from '../../components'
+import {Sidebar,VideoCard} from '../../components'
+import { ACTION_TYPE } from '../../utils'
 import {useData} from '../../context'
+import { searchVideos,sortVideosCategory } from '../../services/services'
 import './VideoListingPage.css'
 
 export const VideoListingPage = () => {
 
-  const {state,dispatch} = useData()
+  const {state,dispatch} = useData();
+
+  const sortingCategory =(cat)=>{
+    dispatch({
+      type: ACTION_TYPE.SORTBY,
+      payload:cat,
+    })
+
+    let newCat = state.categories.map((ele)=>({
+      ...ele,isActive:ele.categoryName===cat?true:false
+    }))
+
+    console.log(newCat)
+
+    dispatch({
+      type: ACTION_TYPE.CATEGORIES,
+      payload:newCat
+    })
+  }
+
+  const searchByName = searchVideos([...state.videos], state.search);
+  const sortByCategory = sortVideosCategory(searchByName, state.sortBy);
+
+  console.log(state.categories)
   
   return (
     <>
-    
     <div className='videolisting-page-wrapper'>
         <Sidebar/>
         <div className='videolisting-section'>
             <div className="videolisting-page-chips">
-              <div className="video-type-chip active-chip">
-                  All
+              {
+                state.categories.map((cat)=>(
+                  <div 
+                  key={cat.id} 
+                  onClick={()=>sortingCategory(cat.categoryName)}
+                  className={cat.isActive?"video-type-chip active-chip":"video-type-chip"}>
+                    {cat.categoryName}
                 </div>
-                <div className="video-type-chip">
-                  Football
-                </div>
-                <div className="video-type-chip">
-                  Cricket
-                </div>
-                <div className="video-type-chip">
-                  Chess
-                </div>
-                <div className="video-type-chip">
-                  Tennis
-                </div>
+                ))
+              }
+
             </div>
             <div className="videolisting-videos">
-              {state.videos.map((vid)=>(
+              {sortByCategory.map((vid)=>(
                 <VideoCard vid={vid} key={vid._id}/>
               ))}
             </div>
