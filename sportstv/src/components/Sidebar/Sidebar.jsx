@@ -8,8 +8,7 @@ export const Sidebar = () => {
     <ul className='sidebar-wrapper'>
         <NavLink 
             to='/'
-            activeClassName='active-sidebar' 
-            className='sidebar-item'>
+            className={({isActive})=>isActive?'sidebar-item active-sidebar':'sidebar-item'}>
             <i class="fas fa-home"></i>Home
         </NavLink>
         
@@ -21,26 +20,22 @@ export const Sidebar = () => {
         
         <NavLink 
             to='/playlist'
-            activeClassName='active-sidebar' 
-            className='sidebar-item'>
+            className={({isActive})=>isActive?'sidebar-item active-sidebar':'sidebar-item'}>
             <RiPlayListAddFill/> Playlists
         </NavLink>
         
         <NavLink to='/liked'
-            activeClassName='active-sidebar' 
-            className='sidebar-item'>
+            className={({isActive})=>isActive?'sidebar-item active-sidebar':'sidebar-item'}>
             <i class="fas fa-thumbs-up"></i> Liked
         </NavLink>
         
         <NavLink to='/history'
-            activeClassName='active-sidebar' 
-            className='sidebar-item'>
+            className={({isActive})=>isActive?'sidebar-item active-sidebar':'sidebar-item'}>
             <i class="fas fa-history"></i> History
         </NavLink>
         
         <NavLink to='/watchlater'
-            activeClassName='active-sidebar' 
-            className='sidebar-item'>
+            className={({isActive})=>isActive?'sidebar-item active-sidebar':'sidebar-item'}>
             <i class="far fa-clock"></i> Watch Later
         </NavLink>
     </ul>
