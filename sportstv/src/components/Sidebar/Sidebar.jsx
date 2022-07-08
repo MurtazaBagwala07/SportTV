@@ -1,30 +1,50 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 import { RiPlayListAddFill } from "react-icons/ri";
 import './Sidebar.css'
 
 export const Sidebar = () => {
   return (
-    <aside className='sidebar-wrapper'>
-        <div className='sidebar-item'>
+    <ul className='sidebar-wrapper'>
+        <NavLink 
+            to='/'
+            activeClassName='active-sidebar' 
+            className='sidebar-item'>
             <i class="fas fa-home"></i>Home
-        </div>
-        <div className='sidebar-item'>
-            <i class="far fa-compass"></i> Explore
-        </div>
-        <div className='sidebar-item'>
-            <RiPlayListAddFill/> Playlists
-        </div>
-        <div className='sidebar-item'>
-            <i class="fas fa-thumbs-up"></i> Liked
-        </div>
-        <div className='sidebar-item'>
-            <i class="fas fa-history"></i> History
-        </div>
-        <div className='sidebar-item'>
-            <i class="far fa-clock"></i> Watch Later
-        </div>
+        </NavLink>
         
-    </aside>
+        <NavLink
+            to='/videos'
+            activeClassName='active-sidebar' 
+            className='sidebar-item'>
+            <i class="far fa-compass"></i> Explore
+        </NavLink>
+        
+        <NavLink 
+            to='/playlist'
+            activeClassName='active-sidebar' 
+            className='sidebar-item'>
+            <RiPlayListAddFill/> Playlists
+        </NavLink>
+        
+        <NavLink to='/liked'
+            activeClassName='active-sidebar' 
+            className='sidebar-item'>
+            <i class="fas fa-thumbs-up"></i> Liked
+        </NavLink>
+        
+        <NavLink to='/history'
+            activeClassName='active-sidebar' 
+            className='sidebar-item'>
+            <i class="fas fa-history"></i> History
+        </NavLink>
+        
+        <NavLink to='/watchlater'
+            activeClassName='active-sidebar' 
+            className='sidebar-item'>
+            <i class="far fa-clock"></i> Watch Later
+        </NavLink>
+    </ul>
   )
 }
 
