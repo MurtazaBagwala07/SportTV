@@ -10,7 +10,6 @@ import './Homepage.css'
 export const Homepage = () => {
   return (
     <>
-        <Header/>
         <div className="homepage-container">
             <div className='hero-container'>
                 <div className='hero-para'>

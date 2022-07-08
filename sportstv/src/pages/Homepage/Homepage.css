@@ -90,7 +90,8 @@
     height: 15rem;
     margin: 1rem 0rem;
     padding: 1rem;
-    border:0.1rem solid var(--text-color)
+    border:0.1rem solid var(--text-color);
+    border-radius: 0.5rem;
 }
 
 .category-para{

@@ -1,0 +1,42 @@
+.video-card{
+    width:18rem;
+    height: 17rem;
+    border: 0.1rem solid var(--primary-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.video-thumbnail{
+    border-radius: 0.5rem;
+    height:9rem;
+}
+
+.img-resp{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.video-main{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    padding: 0.5rem;
+}
+
+.video-heading{
+    font-size:1rem;
+    font-weight: 500;
+}
+
+.video-detail{
+    font-size:0.8rem;
+}
+
+.video-card-actions{
+    font-size:1rem;
+    font-weight: 500;
+}

@@ -1,10 +1,18 @@
 import "./App.css";
-import {Homepage} from './pages'
+import {Homepage, VideoListingPage, SingleVideo} from './pages'
+import { Route, Routes } from "react-router-dom";
+import { Header } from "./components";
+
 
 function App() {
   return (
     <div className="App">
-      <Homepage/>
+      <Header/>
+      <Routes>
+        <Route path="/" element={<Homepage/>}/>
+        <Route path="/videos" element={<VideoListingPage/>}/>
+        <Route path="/video/:videoID" element={<SingleVideo/>}/>
+      </Routes>
     </div>
   );
 }
