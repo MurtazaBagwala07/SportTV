@@ -1,0 +1,27 @@
+.ecom-nav-container{
+    background-color: var(--navbar-color);
+    color: var(--text-color);
+}
+
+.header-span-title{
+    font-size:2rem;
+}
+
+.primary-color{
+    color: var(--primary-color);
+    
+}
+
+.fa-search{
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.ecom-nav-action-btn{
+    background-color: var(--navbar-color);
+    width:auto;
+}
+
+.ecom-nav-icon{
+    font-size:1.5rem;
+}

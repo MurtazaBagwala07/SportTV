@@ -1,0 +1,58 @@
+.singlevideo-page{
+    display: flex;
+    flex-direction: row;
+}
+
+.video-play-container{
+    width:80%;
+    display: flex;
+    flex-direction:column;
+    padding: 2rem;
+}
+
+.video-title{
+    font-weight:normal;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.video-created{
+    font-weight:normal;
+    font-size:1.1rem;
+    font-weight: bold;
+}
+
+.video-date{
+    font-weight:normal;
+    font-size:0.9rem;
+}
+
+.video-footer{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+}
+
+.video-headers{
+    margin-right: auto;
+}
+
+.video-action-btns{
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    height: 2rem;
+    gap: 1rem;
+}
+
+.action-btn{
+    padding:0.5rem;
+    display: flex;
+    gap:0.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+}

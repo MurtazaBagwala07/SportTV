@@ -1,0 +1,30 @@
+.sidebar-wrapper{
+    width:12rem;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    gap:1rem;
+    
+}
+
+.sidebar-item{
+    width:100%;
+    height:2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
+    gap:0.5rem;
+    height:3rem;
+    padding:0rem 2rem;
+    font-size: 1.2rem;
+    color: inherit;
+    text-decoration: none;   
+}
+
+.active-sidebar{
+    background-color: var(--navbar-color);
+}

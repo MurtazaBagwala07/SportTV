@@ -1,0 +1,42 @@
+.videolisting-page-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.videolisting-section{
+    padding:0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+}
+    
+
+.videolisting-page-chips{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.video-type-chip{
+    min-width:5rem;
+    height:2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    padding:1rem;
+    background-color: var(--navbar-color);
+    color: var(--text-color);
+}
+
+.active-chip{
+    background-color: var(--primary-color);
+}
+
+.videolisting-videos{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1.2rem;
+    padding: 0 1rem;
+}
