@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
-import {useLocation} from 'react-router-dom'
+import {useLocation , Link , useNavigate} from 'react-router-dom'
 import {useData} from '../../context'
 import {ACTION_TYPE} from '../../utils'
 import './Header.css'
 
 export const Header = () => {
 
+  const navigate = useNavigate()
   const {dispatch} = useData();
   const [search,setSearch] =useState('')
   const {pathname} = useLocation();
@@ -21,7 +22,7 @@ export const Header = () => {
 
   return (
     <nav className="ecom-nav-container">
-            <p className="ecom-nav-title">Sports<span className="header-span-title primary-color">TV</span></p>
+            <p onClick={()=>navigate('/')} className="ecom-nav-title">Sports<span className="header-span-title primary-color">TV</span></p>
             { pathname==='/videos' 
             
                 &&
@@ -42,7 +43,7 @@ export const Header = () => {
             </div>}
             <div className="ecom-nav-action-btns">
                     <div className="ecom-nav-action-btn badge">
-                        <i class="fas fa-user ecom-nav-icon primary-color"></i>
+                        <Link to='/profile' class="fas fa-user ecom-nav-icon primary-color"></Link>
                     </div>
             </div>
         </nav>

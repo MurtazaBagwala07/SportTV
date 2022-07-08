@@ -1,13 +1,15 @@
 import React from 'react'
-import {Footer, Header} from '../../components'
+import {Footer} from '../../components'
 import HeroImg from '../../assets/dhoni.jpg'
 import Football from '../../assets/modric.jpg' 
 import Chess from '../../assets/magnus.jpeg'
 import Tennis from '../../assets/nadal.jpg'
 import Cricket from '../../assets/kohli.jpg'
+import { useNavigate } from 'react-router-dom'
 import './Homepage.css'
  
 export const Homepage = () => {
+  const navigate = useNavigate()
   return (
     <>
         <div className="homepage-container">
@@ -15,7 +17,7 @@ export const Homepage = () => {
                 <div className='hero-para'>
                     <p className='hero-title'>Best of Sports</p>
                     <p className='hero-description'>Watch sports in their best form at SportsTV</p>
-                    <button className='hero-button'>Explore Now</button>
+                    <button onClick={()=>navigate('/videos')} className='hero-button'>Explore Now</button>
                 </div>
                 <img className='hero-img' src={HeroImg} alt="hero-img" />
             </div>
