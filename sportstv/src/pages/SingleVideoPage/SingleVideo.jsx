@@ -1,15 +1,46 @@
 import React from 'react'
 import {Sidebar} from '../../components'
 import {useParams} from 'react-router-dom'
-import {useData} from '../../context'
+import {useData,useAuth} from '../../context'
+import { likeVideoService,removeLikeVideoService } from '../../services/services'
+import { ACTION_TYPE } from '../../utils'
 import './SingleVideo.css'
 
 export const SingleVideo = () => {
 
+    const {auth} = useAuth();
     const {videoID} = useParams();
     const {state,dispatch} = useData();
     const video = state.videos?.find((vid)=>vid._id === videoID);
-    console.log(video)
+    const isLiked =state.like.find((ele)=>ele._id===video._id)
+    console.log(state.like)
+    console.log(isLiked)
+
+
+    const likeHandler=async()=>{
+        if(isLiked){
+            removeLikeHandler()
+        }else{
+            const data = await likeVideoService(video,auth.token)
+        if(data){
+            dispatch({
+                type:ACTION_TYPE.LIKE_HANDLER,
+                payload:data.likes
+            })
+        }
+        }
+    }
+
+    const removeLikeHandler=async()=>{
+        const data = await removeLikeVideoService(video,auth.token)
+        if(data){
+            dispatch({
+                type:ACTION_TYPE.LIKE_HANDLER,
+                payload:data.likes
+            })
+        }
+    }
+
 
   return (
     <div className='singlevideo-page'>
@@ -37,8 +68,8 @@ export const SingleVideo = () => {
                 </small>
             </div>
             <div className='video-action-btns'>
-                <button className='action-btn'>
-                    <i class="fas fa-thumbs-up "></i> Like
+                <button onClick={()=>likeHandler()} className='action-btn'>
+                    <i class="fas fa-thumbs-up "></i> {isLiked?'Liked':'Like'}
                 </button>
                 <button className='action-btn'>
                     <i class="far fa-clock "></i> Watch Later

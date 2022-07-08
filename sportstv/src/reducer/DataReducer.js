@@ -36,6 +36,12 @@ export const DataReducer=(state,action)=>{
             }
         }
 
+        case ACTION_TYPE.LIKE_HANDLER:{
+            return {
+                ...state,like:action.payload
+            }
+        }
+
         case ACTION_TYPE.SORTBY:{
             return {
                 ...state,sortBy:action.payload
