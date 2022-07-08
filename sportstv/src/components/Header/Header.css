@@ -25,3 +25,7 @@
 .ecom-nav-icon{
     font-size:1.5rem;
 }
+
+.ecom-nav-title{
+    cursor: pointer;
+}

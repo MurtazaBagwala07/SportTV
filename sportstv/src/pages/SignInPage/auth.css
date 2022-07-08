@@ -1,0 +1,37 @@
+.auth-page{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-container{
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:5rem;
+    border: 1px solid ;
+    padding:1rem 3rem;
+    height:30rem;
+}
+
+.auth-title{
+    font-size:2rem;
+}
+
+.auth-input{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.auth-action-btns{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+
+
