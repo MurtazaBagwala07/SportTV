@@ -15,8 +15,7 @@ export const Sidebar = () => {
         
         <NavLink
             to='/videos'
-            activeClassName='active-sidebar' 
-            className='sidebar-item'>
+            className={({isActive})=>isActive?'sidebar-item active-sidebar':'sidebar-item'}>
             <i class="far fa-compass"></i> Explore
         </NavLink>
         
