@@ -48,6 +48,12 @@ export const DataReducer=(state,action)=>{
             }
         }
 
+        case ACTION_TYPE.WATCHLATER_HANDLER:{
+            return {
+                ...state,watchLater:action.payload
+            }
+        }
+
         case ACTION_TYPE.SORTBY:{
             return {
                 ...state,sortBy:action.payload
