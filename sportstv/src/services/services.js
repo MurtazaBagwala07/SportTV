@@ -113,6 +113,39 @@ export const clearAllHistoryService = async (token)=>{
   }
 }
 
+export const addToWatchLaterService = async(video,token)=>{
+  try {
+    const response = await axios.post('/api/user/watchlater',{
+      video
+    },{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const removeFromWatchLaterService= async(video,token)=>{
+  try {
+    const  response = await axios.delete(`/api/user/watchlater/${video._id}`,{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+
 export const searchVideos = (videos, search) => {
     return search
       ? [...videos].filter((video) =>
