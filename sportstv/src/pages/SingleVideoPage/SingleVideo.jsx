@@ -13,8 +13,7 @@ export const SingleVideo = () => {
     const {state,dispatch} = useData();
     const video = state.videos?.find((vid)=>vid._id === videoID);
     const isLiked =state.like.find((ele)=>ele._id===video._id)
-    console.log(state.like)
-    console.log(isLiked)
+    
 
 
     const likeHandler=async()=>{

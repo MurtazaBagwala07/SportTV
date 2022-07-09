@@ -5,4 +5,5 @@ export const ACTION_TYPE={
     SORTBY:'SORTBY',
     SEARCH:'SEARCH',
     LIKE_HANDLER:'LIKE_HANDLER',
+    HISTORY:'HISTORY',
 }

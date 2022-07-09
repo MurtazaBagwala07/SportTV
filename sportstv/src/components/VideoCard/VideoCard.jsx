@@ -1,12 +1,32 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { addToHistoryService } from '../../services/services'
+import { ACTION_TYPE } from '../../utils'
+import {useAuth,useData} from '../../context'
 import './VideoCard.css'
 
 export const VideoCard = ({vid}) => {
+
+    const {auth } = useAuth();
+    const {dispatch} = useData();
     const navigate = useNavigate()
 
     const toSingleVideoPage=()=>{
         navigate(`/video/${vid._id}`)
+        if(auth.isAuth){
+            try {
+                (async () => {
+                    const data = await addToHistoryService(vid, auth.token);
+                      dispatch({
+                        type: ACTION_TYPE.HISTORY,
+                        payload:data.history
+                      });
+                    
+                  })();
+            } catch (error) {
+                console.error(error)
+            }
+        }
     }
   return (
     <>

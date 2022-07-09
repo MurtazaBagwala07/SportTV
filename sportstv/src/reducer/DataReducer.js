@@ -42,6 +42,12 @@ export const DataReducer=(state,action)=>{
             }
         }
 
+        case ACTION_TYPE.HISTORY:{
+            return {
+                ...state,history:action.payload
+            }
+        }
+
         case ACTION_TYPE.SORTBY:{
             return {
                 ...state,sortBy:action.payload
