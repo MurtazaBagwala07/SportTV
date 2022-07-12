@@ -1,11 +1,11 @@
 import React from 'react'
 import {useAuth,useData} from '../../context'
 import {useNavigate} from 'react-router-dom'
-import {addToHistoryService, deleteFromHistoryService} from '../../services'
+import { addToHistoryService,deleteFromHistoryService } from '../../services/services'
 import {ACTION_TYPE} from '../../utils'
 import '../VideoCard/VideoCard.css'
 
-export const HistoryCard = (vid) => {
+export const HistoryCard = ({vid}) => {
 
     const {auth} = useAuth();
     const {dispatch} = useData();
@@ -63,7 +63,7 @@ export const HistoryCard = (vid) => {
             <p className='video-main'>
                 <span className='video-creator video-detail'>{vid.creator}</span>
                 <span className='video-date video-detail'>{vid.uploadDate}</span>
-                <i onClick={()=>deleteFromHistory()} class="fa-solid fa-trash"></i>
+                <i onClick={()=>deleteFromHistory()} class="fas fa-trash"></i>
             </p>
             
         </div>

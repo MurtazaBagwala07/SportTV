@@ -1,12 +1,12 @@
 import "./App.css";
-import {Homepage, VideoListingPage, SingleVideo, SignIn, SignUp,Profile, Like, History} from './pages'
+import {Homepage, VideoListingPage, SingleVideo, SignIn, SignUp,Profile, Like, History,WatchLater} from './pages'
 import {useAuth} from "./context"
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components";
 
 
 function App() {
-  const {auth,setAuth} = useAuth();
+  const {auth} = useAuth();
   return (
     <div className="App">
       <Header/>
@@ -19,6 +19,7 @@ function App() {
         <Route path="/profile" element={auth.isAuth?<Profile/>:<SignIn/>}></Route>
         <Route path="/liked" element={auth.isAuth?<Like/>:<SignIn/>}></Route>
         <Route path="/history" element={auth.isAuth?<History/>:<SignIn/>}></Route>
+        <Route path='watchlater' element={auth.isAuth?<WatchLater/>:<SignIn/>}></Route>
       </Routes>
     </div>
   );
