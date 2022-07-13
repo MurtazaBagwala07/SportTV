@@ -1,11 +1,11 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { addToHistoryService } from '../../services/services'
-import { ACTION_TYPE } from '../../utils'
 import {useAuth,useData} from '../../context'
-import './VideoCard.css'
+import {useNavigate} from 'react-router-dom'
+import { addToHistoryService,deleteFromHistoryService } from '../../services/services'
+import {ACTION_TYPE} from '../../utils'
+import '../VideoCard/VideoCard.css'
 
-export const VideoCard = ({vid}) => {
+export const HistoryCard = ({vid}) => {
 
     const {auth} = useAuth();
     const {dispatch} = useData();
@@ -27,6 +27,23 @@ export const VideoCard = ({vid}) => {
             }
         }
     }
+
+    const deleteFromHistory =async()=>{
+        if(auth.isAuth){
+            try {
+                (async ()=>{
+                    const data = await deleteFromHistoryService(vid, auth.token)
+                    dispatch({
+                        type: ACTION_TYPE.HISTORY,
+                        payload:data.history
+                    });
+                })();
+            } catch (error) {
+                console.error(error)
+            }
+        }
+    }
+
   return (
     <>
         <div className='video-card'>
@@ -46,7 +63,9 @@ export const VideoCard = ({vid}) => {
             <p className='video-main'>
                 <span className='video-creator video-detail'>{vid.creator}</span>
                 <span className='video-date video-detail'>{vid.uploadDate}</span>
+                <i onClick={()=>deleteFromHistory()} class="fas fa-trash"></i>
             </p>
+            
         </div>
     </>
   )

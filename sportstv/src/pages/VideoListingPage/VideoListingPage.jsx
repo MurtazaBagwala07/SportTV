@@ -30,7 +30,6 @@ export const VideoListingPage = () => {
   const searchByName = searchVideos([...state.videos], state.search);
   const sortByCategory = sortVideosCategory(searchByName, state.sortBy);
 
-  console.log(state.categories)
   
   return (
     <>

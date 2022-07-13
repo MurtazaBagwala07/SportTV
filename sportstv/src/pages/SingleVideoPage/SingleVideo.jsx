@@ -1,15 +1,70 @@
 import React from 'react'
 import {Sidebar} from '../../components'
 import {useParams} from 'react-router-dom'
-import {useData} from '../../context'
+import {useData,useAuth} from '../../context'
+import { likeVideoService,removeLikeVideoService, addToWatchLaterService, removeFromWatchLaterService } from '../../services/services'
+import { ACTION_TYPE } from '../../utils'
 import './SingleVideo.css'
 
 export const SingleVideo = () => {
 
+    const {auth} = useAuth();
     const {videoID} = useParams();
     const {state,dispatch} = useData();
     const video = state.videos?.find((vid)=>vid._id === videoID);
-    console.log(video)
+    const isLiked =state.like.find((ele)=>ele._id===video._id)
+    const inWatchLater = state.watchLater.find((ele)=>ele._id===video._id)
+    
+
+    const likeHandler=async()=>{
+        if(isLiked){
+            removeLikeHandler()
+        }else{
+            const data = await likeVideoService(video,auth.token)
+        if(data){
+            dispatch({
+                type:ACTION_TYPE.LIKE_HANDLER,
+                payload:data.likes
+            })
+        }
+        }
+    }
+
+    const removeLikeHandler=async()=>{
+        const data = await removeLikeVideoService(video,auth.token)
+        if(data){
+            dispatch({
+                type:ACTION_TYPE.LIKE_HANDLER,
+                payload:data.likes
+            })
+        }
+    }
+
+    const watchLaterHandler = async()=> {
+        if(inWatchLater){
+            removeWatchLaterHandler()
+        }
+        else{
+            const data =  await addToWatchLaterService(video,auth.token)
+            if(data){
+                dispatch({
+                    type:ACTION_TYPE.WATCHLATER_HANDLER,
+                    payload : data.watchlater
+                })
+            }
+        }
+    }
+
+    const removeWatchLaterHandler=async()=>{
+        const data  =  await removeFromWatchLaterService(video,auth.token)
+        if(data){
+            dispatch({ 
+                type:ACTION_TYPE.WATCHLATER_HANDLER,
+                payload : data.watchlater
+            })
+        }
+    }
+
 
   return (
     <div className='singlevideo-page'>
@@ -37,11 +92,11 @@ export const SingleVideo = () => {
                 </small>
             </div>
             <div className='video-action-btns'>
-                <button className='action-btn'>
-                    <i class="fas fa-thumbs-up "></i> Like
+                <button onClick={()=>likeHandler()} className='action-btn'>
+                    <i class="fas fa-thumbs-up "></i> {isLiked?'Liked':'Like'}
                 </button>
-                <button className='action-btn'>
-                    <i class="far fa-clock "></i> Watch Later
+                <button onClick={()=>watchLaterHandler()} className='action-btn'>
+                    <i class="far fa-clock "></i> {inWatchLater?'In Watch Later':'Add to Watch Later'}
                 </button>
                 <button className='action-btn'>
                     <i class="fas fa-copy "></i> Copy Link

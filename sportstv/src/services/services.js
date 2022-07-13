@@ -6,11 +6,9 @@ export const getCategoryService=async()=> await axios.get('/api/categories')
 
 export const loginService=async(email, password)=> {
   try {
-    console.log(email, password)
     const response = await axios.post('/api/auth/login', {
         email, password
     })
-    console.log(response)
     if (response.status === 200 || response.status === 201) {
         return response.data
     }
@@ -32,6 +30,121 @@ export const signUpService =async(firstName,lastName,email, password) => {
     console.error(error);
   }
 }
+
+export const likeVideoService = async(video,token)=>{
+  try{
+    const response = await axios.post('/api/user/likes',{
+      video
+    },{
+      headers:{
+        authorization:token,
+      },
+    })
+    if(response.status === 201){
+      return response.data
+    }
+  
+  }catch (error) {
+    console.error(error);
+  }
+}
+
+export const removeLikeVideoService =async (video,token)=>{
+  try {
+    const response = await axios.delete(`/api/user/likes/${video._id}`,{
+      headers:{
+        authorization:token,
+      }
+    })
+
+    if(response.status===200){
+      return response.data
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const addToHistoryService = async (video,token)=>{
+  try {
+    const response = await axios.post('/api/user/history',{
+      video
+    },{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status===201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const deleteFromHistoryService = async (video,token)=>{
+  try {
+    const response = await axios.delete(`/api/user/history/${video._id}`,{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status===200|| response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const clearAllHistoryService = async (token)=>{
+  try {
+    const response = await axios.delete('/api/user/history/all',{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const addToWatchLaterService = async(video,token)=>{
+  try {
+    const response = await axios.post('/api/user/watchlater',{
+      video
+    },{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const removeFromWatchLaterService= async(video,token)=>{
+  try {
+    const  response = await axios.delete(`/api/user/watchlater/${video._id}`,{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 
 export const searchVideos = (videos, search) => {
     return search
