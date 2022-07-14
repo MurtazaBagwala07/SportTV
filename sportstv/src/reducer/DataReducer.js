@@ -6,7 +6,7 @@ export const InitialState={
     like:[],
     watchLater:[],
     history: [],
-    playlist: [],
+    playlists: [],
     sortBy:'',
     search:'',
 }
@@ -51,6 +51,12 @@ export const DataReducer=(state,action)=>{
         case ACTION_TYPE.WATCHLATER_HANDLER:{
             return {
                 ...state,watchLater:action.payload
+            }
+        }
+
+        case ACTION_TYPE.PLAYLIST_HANDLER:{
+            return {
+                ...state,playlists : action.payload
             }
         }
 
