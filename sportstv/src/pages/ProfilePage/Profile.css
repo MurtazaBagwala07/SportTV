@@ -1,0 +1,30 @@
+.profile-page{
+    width: 100vw;
+    height: 91.3vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.profile-card{
+    background-color: var(--navbar-color);
+    width:20rem;
+    padding:1rem;
+    border-radius:0.25rem;
+    display: flex;
+    flex-direction:column;
+    gap: 1rem;
+}
+
+.profile-btn{
+    height: 2rem;
+    cursor: pointer;
+}
+
+.profile-btn:hover{
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--text-color);
+}

@@ -7,6 +7,9 @@ const DataContext = createContext()
 
 const DataProvider=({children})=>{
     const [state,dispatch] = useReducer(DataReducer,InitialState);
+    const [modal,setModal] = useState(false)
+    const [modalData, setModalData] = useState(false);
+
     
     useEffect(()=>{
         (async ()=>{
@@ -41,7 +44,7 @@ const DataProvider=({children})=>{
     },[])
     
     return(
-        <DataContext.Provider value={{state,dispatch}}>
+        <DataContext.Provider value={{state,dispatch,modal,setModal,modalData,setModalData}}>
             {children}
         </DataContext.Provider>
     );

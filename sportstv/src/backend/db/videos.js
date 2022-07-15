@@ -6,7 +6,7 @@
 export const videos = [
   {
     _id: "suF5KkwNa1E",
-    title: "REAL MADRID LEGENDARY MOMENTS",
+    title: "MADRID LEGENDARY MOMENTS",
     creator: "Nino Productions",
     src:'https://youtu.be/suF5KkwNa1E',
     category:'Football',
@@ -94,7 +94,7 @@ export const videos = [
 
   {
     _id: "0V3urTv67CM",
-    title: "Is Magnus DONE?",
+    title: "Is Magnus Carlsen DONE?",
     creator: "GothamChess",
     src:'https://youtu.be/0V3urTv67CM',
     category:'Chess',
@@ -149,7 +149,7 @@ export const videos = [
 
   {
     _id: "0pYlJ7hA5Zo",
-    title: "Ravindra Jadeja: The best fielder in the world?",
+    title: "Ravindra Jadeja: The best fielder?",
     creator: "ICC",
     src:'https://youtu.be/0pYlJ7hA5Zo',
     category:'Cricket',

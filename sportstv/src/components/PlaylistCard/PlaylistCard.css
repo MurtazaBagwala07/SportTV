@@ -1,0 +1,34 @@
+.playlist-card{
+    width:16rem;
+    height: 10rem;
+    border: 0.1rem solid var(--primary-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.playlist-thumbnail{
+    border-radius: 0.5rem;
+    height:8rem;
+    position: relative;
+
+}
+
+.playlist-number{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color:grey;
+    width:6rem;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.playlist-desc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  
+    padding:0 0.5rem;  
+}
+

@@ -1,12 +1,13 @@
 .sidebar-wrapper{
-    width:12rem;
+    width:14rem;
     height:100vh;
     display: flex;
     flex-direction: column;
     background-color: var(--bg-color);
     color: var(--text-color);
     gap:1rem;
-    
+    position: sticky;
+    top: 0;
 }
 
 .sidebar-item{

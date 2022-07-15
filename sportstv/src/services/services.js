@@ -164,7 +164,7 @@ export const createNewPlaylistService = async(token,name)=>{
   }
 }
 
-export const addVideoToPlaylistService=(token,playlistId,video)=>{
+export const addVideoToPlaylistService=async(token,playlistId,video)=>{
   try {
     const response = await axios.post(`/api/user/playlists/${playlistId}`,{
       video
@@ -181,7 +181,7 @@ export const addVideoToPlaylistService=(token,playlistId,video)=>{
   }
 }
 
-export const removeVideoFromPlaylistService=(token,playlistId,video)=>{
+export const removeVideoFromPlaylistService=async(token,playlistId,video)=>{
   try {
     const response = await axios.post(`/api/user/playlists/${playlistId}/${video._id}`,{
       headers:{
@@ -196,7 +196,7 @@ export const removeVideoFromPlaylistService=(token,playlistId,video)=>{
   }
 }
 
-export const deletePlaylistService = (token,playlistId)=>{
+export const deletePlaylistService = async(token,playlistId)=>{
   try {
     const response = await axios.delete(`/api/user/playlists/${playlistId}`,{
       headers:{
