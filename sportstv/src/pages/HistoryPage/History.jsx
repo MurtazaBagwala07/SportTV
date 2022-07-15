@@ -3,7 +3,7 @@ import { clearAllHistoryService } from '../../services/services'
 import {ACTION_TYPE} from '../../utils'
 import {useAuth,useData} from '../../context'
 import './History.css'
-import { HistoryCard } from '../../components'
+import { HistoryCard,Sidebar } from '../../components'
 
 export const History = () => {
 
@@ -26,14 +26,17 @@ export const History = () => {
         }
     }
   return (
-    <div>
-        History Page
-        <button onClick={()=>clearHistory()}>Clear All History</button>
-        <div>
-            {state.history.map((vid)=>(
-                <HistoryCard vid={vid}/>
-            ))}
+    <div className='history-wrapper'>
+        <Sidebar/>
+        <div className='history-section'>
+            <button className='history-clear-btn' onClick={()=>clearHistory()}>Clear All History</button>
+            <div className='history-videos'>
+                {state.history.map((vid)=>(
+                    <HistoryCard vid={vid}/>
+                ))}
+            </div>
         </div>
+        
     </div>
   )
 }

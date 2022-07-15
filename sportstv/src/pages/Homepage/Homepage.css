@@ -19,11 +19,11 @@
 }
 
 .hero-para{
-    width:15rem;
+    width:20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap:1rem;
 }
 
@@ -31,6 +31,7 @@
     font-size:1.5rem;
     margin:0rem;
     padding:0rem;
+    font-weight: bolder;
 }
 
 .hero-description{
@@ -41,18 +42,19 @@
 .hero-button{
     width:10rem;
     height: 2.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     background-color: var(--primary-color);
     color: var(--text-color);
+    cursor: pointer;
 }
 
 .hero-button:hover{
-    background-color: var(--hover-color);
+    background-color: var(--navbar-color);
 }
 
 .hero-img{
     width: 30rem;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
 }
 
 .hr{
@@ -86,16 +88,15 @@
     flex-direction: row;
     justify-content: center;
     gap: 2rem;
-    width: 30rem;
-    height: 15rem;
+    width: 26rem;
+    height: 12rem;
     margin: 1rem 0rem;
-    padding: 1rem;
     border:0.1rem solid var(--text-color);
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
 }
 
 .category-para{
-    width:15rem;
+    width:12rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,16 +118,18 @@
 .category-button{
     width:10rem;
     height: 2.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     background-color: var(--primary-color);
     color: var(--text-color);
+    cursor: pointer;
 }
 
 .category-button:hover{
-    background-color: var(--hover-color);
+    background-color: var(--navbar-color);
 }
 
 .category-img{
-    width: 15rem;
-    border-radius: 0.5rem;
+    width: 12rem;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25
 }

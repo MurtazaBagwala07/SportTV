@@ -25,6 +25,7 @@ export const Homepage = () => {
             <div className='homepage-category-container'>
               <p className='categories-title'>Sports to Enjoy</p>
               <div className='homepage-categories'>
+                
                 <div className="category-container">
                     <div className='category-para'>
                       <p className='category-title'>Cricket</p>

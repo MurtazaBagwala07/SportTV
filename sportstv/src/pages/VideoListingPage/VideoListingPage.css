@@ -22,7 +22,7 @@
 .video-type-chip{
     min-width:5rem;
     height:2rem;
-    border-radius: 1rem;
+    border-radius: 0.25rem;
     cursor: pointer;
     display: flex;
     justify-content:center;

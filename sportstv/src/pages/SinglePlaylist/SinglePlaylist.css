@@ -1,0 +1,15 @@
+.single-pl-wrapper{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--navbar-color);
+    color: var(--text-color);
+    width: 100%;
+}
+
+.single-pl-section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:1rem;
+    gap:1rem;
+}
