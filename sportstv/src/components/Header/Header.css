@@ -29,3 +29,16 @@
 .ecom-nav-title{
     cursor: pointer;
 }
+
+.ecom-nav-searchbar{
+    width:40rem;
+    border-radius: 0.25rem;
+    cursor:pointer;
+}
+
+.ecom-nav-searchbar-input{
+    outline:none;
+    padding: 0.25rem 1rem;
+    width:30rem;
+    color: var(--navbar-color)
+}

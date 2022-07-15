@@ -39,6 +39,9 @@
 
 .video-headers{
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .video-action-btns{

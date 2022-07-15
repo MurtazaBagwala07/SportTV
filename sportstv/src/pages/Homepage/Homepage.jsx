@@ -6,10 +6,34 @@ import Chess from '../../assets/magnus.jpeg'
 import Tennis from '../../assets/nadal.jpg'
 import Cricket from '../../assets/kohli.jpg'
 import { useNavigate } from 'react-router-dom'
+import { useData } from '../../context'
+import {ACTION_TYPE} from '../../utils'
 import './Homepage.css'
  
 export const Homepage = () => {
+
+  const {state,dispatch} = useData();
+  
   const navigate = useNavigate()
+
+  const categorySelect=(cat)=>{
+    dispatch({
+      type: ACTION_TYPE.SORTBY,
+      payload:cat,
+    })
+
+    let newCat = state.categories.map((ele)=>({
+      ...ele,isActive:ele.categoryName===cat?true:false
+    }))
+
+    dispatch({
+      type: ACTION_TYPE.CATEGORIES,
+      payload:newCat
+    })
+
+    navigate('/videos')
+  }
+
   return (
     <>
         <div className="homepage-container">
@@ -30,7 +54,7 @@ export const Homepage = () => {
                     <div className='category-para'>
                       <p className='category-title'>Cricket</p>
                       <p className='category-description'>A gentlemans game</p>
-                      <button className='category-button'>Cricket</button>
+                      <button onClick={()=>categorySelect('Cricket')} className='category-button'>Cricket</button>
                     </div>
                     <img className='category-img' src={Cricket}  alt="football" />
                   </div>
@@ -39,7 +63,7 @@ export const Homepage = () => {
                     <div className='category-para'>
                       <p className='category-title'>Chess</p>
                       <p className='category-description'>A Mindful game</p>
-                      <button className='category-button'>Chess</button>
+                      <button onClick={()=>categorySelect('Chess')} className='category-button'>Chess</button>
                     </div>
                     <img className='category-img' src={Chess}  alt="football" />
                   </div>
@@ -48,7 +72,7 @@ export const Homepage = () => {
                     <div className='category-para'>
                       <p className='category-title'>Football</p>
                       <p className='category-description'>A sport to die for</p>
-                      <button className='category-button'>Football</button>
+                      <button onClick={()=>categorySelect('Football')} className='category-button'>Football</button>
                     </div>
                     <img className='category-img' src={Football}  alt="football" />
                   </div>
@@ -57,7 +81,7 @@ export const Homepage = () => {
                     <div className='category-para'>
                       <p className='category-title'>Tennis</p>
                       <p className='category-description'>Game of Gods</p>
-                      <button className='category-button'>Tennis</button>
+                      <button onClick={()=>categorySelect('Tennis')} className='category-button'>Tennis</button>
                     </div>
                     <img className='category-img' src={Tennis}  alt="football" />
                   </div>

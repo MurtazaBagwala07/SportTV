@@ -10,6 +10,7 @@ export const VideoListingPage = () => {
   const {state,dispatch} = useData();
 
   const sortingCategory =(cat)=>{
+    
     dispatch({
       type: ACTION_TYPE.SORTBY,
       payload:cat,
@@ -18,8 +19,6 @@ export const VideoListingPage = () => {
     let newCat = state.categories.map((ele)=>({
       ...ele,isActive:ele.categoryName===cat?true:false
     }))
-
-    console.log(newCat)
 
     dispatch({
       type: ACTION_TYPE.CATEGORIES,

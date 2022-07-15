@@ -134,11 +134,11 @@ export const VideoCard = ({vid}) => {
 
 
         <div className={`playlist-modal ${modal?'modal-show':'modal-hide'}`}>
-            <div className="playlist-wrapper">
-                <h4 className=''>
-                    Save To :
+            <div className="playlist-modal-wrapper">
+                <h4 className='playlist-modal-title'>
+                    Add To :
                     <i
-                    className='playlist__text fa fa-times'
+                    className='playlist-modal-close fa fa-times'
                     aria-hidden='true'
                     onClick={() => setModal(!modal)}
                     />
@@ -147,17 +147,12 @@ export const VideoCard = ({vid}) => {
                     console.log(list)
                     const inPlaylist = list.videos?.some(
                         (list) => {
-                            {
-                                console.log(list)
-                                console.log(modalData._id)
-                                console.log(state.playlists)
-                                console.log(list._id===modalData._id);}
                             return list._id === modalData._id
                         }
                       );
                     return(
                         <div key={list._id}>
-                            <label>
+                            <label className="playlist-list">
                                 <input 
                                     type='checkbox'
                                     checked={inPlaylist?true:false}
@@ -168,14 +163,14 @@ export const VideoCard = ({vid}) => {
                         </div>
                     );
                 })}
-                <div>
+                <div className='playlist-modal-input'>
                     <label>
                         Name : 
-                        <input type='text' value={playlistInput} onChange={(e)=>setPlaylistInput(e.target.value)}/>
+                        <input className='playlist-modal-input-text' type='text' value={playlistInput} onChange={(e)=>setPlaylistInput(e.target.value)}/>
                     </label>
                 </div>
                 <div>
-                    <button onClick={()=>createPlaylistHandler()}>
+                    <button className='playlist-modal-btn' onClick={()=>createPlaylistHandler()}>
                         Create New Playlist
                     </button>
                 </div>
