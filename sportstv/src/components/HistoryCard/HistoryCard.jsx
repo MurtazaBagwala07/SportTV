@@ -55,11 +55,11 @@ export const HistoryCard = ({vid}) => {
                 <header className='video-heading'>
                     {vid.title}
                 </header>
+                <i onClick={()=>deleteFromHistory()} class="fas fa-trash"></i>
             </div>
             
             <p className='video-main'>
                 <span className='video-creator video-detail'>{vid.creator}</span>
-                <i onClick={()=>deleteFromHistory()} class="fas fa-trash"></i>
             </p>
             
         </div>

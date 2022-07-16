@@ -79,7 +79,7 @@ export const VideoCard = ({vid}) => {
 
 
     const addVideoToPlaylist=async(id)=>{
-        const data = await addVideoToPlaylistService(auth.token,id,vid)
+        const data = await addVideoToPlaylistService(auth.token,id,modalData)
         dispatch({
             type:ACTION_TYPE.PLAYLIST_VIDEO_HANDLER,
             payload:data.playlist
@@ -87,17 +87,13 @@ export const VideoCard = ({vid}) => {
     }
 
     const removeVideoFromPlaylist=async(id)=>{
-        const data  = await removeVideoFromPlaylistService(auth.token,id,vid)
-        console.log('that')
+        const data  = await removeVideoFromPlaylistService(auth.token,id,modalData)
         console.log(data)
-        // dispatch({
-        //     type:ACTION_TYPE.PLAYLIST_VIDEO_HANDLER,
-        //     payload:data.playlist
-        // })
+        dispatch({
+            type:ACTION_TYPE.PLAYLIST_VIDEO_HANDLER,
+            payload:data.playlist
+        })
     }
-    
-    
-
     
 
   return (
@@ -144,7 +140,6 @@ export const VideoCard = ({vid}) => {
                     />
                 </h4>
                 {state.playlists.map((list)=>{
-                    console.log(list)
                     const inPlaylist = list.videos?.some(
                         (list) => {
                             return list._id === modalData._id
@@ -155,7 +150,7 @@ export const VideoCard = ({vid}) => {
                             <label className="playlist-list">
                                 <input 
                                     type='checkbox'
-                                    checked={inPlaylist?true:false}
+                                    checked={inPlaylist}
                                     onChange={(e)=>e.target.checked?addVideoToPlaylist(list._id):removeVideoFromPlaylist(list._id)}
                                 />
                                 <span>{list.title}</span>

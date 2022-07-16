@@ -7,7 +7,7 @@ export const Profile = () => {
 
   const navigate = useNavigate()
 
-  const {auth , setAuth} = useAuth();
+  const {setAuth} = useAuth();
 
   const name= localStorage.getItem('userName')
   const email = localStorage.getItem('userEmail')

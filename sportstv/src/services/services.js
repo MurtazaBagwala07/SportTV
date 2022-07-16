@@ -183,7 +183,7 @@ export const addVideoToPlaylistService=async(token,playlistId,video)=>{
 
 export const removeVideoFromPlaylistService=async(token,playlistId,video)=>{
   try {
-    const response = await axios.post(`/api/user/playlists/${playlistId}/${video._id}`,{
+    const response = await axios.delete(`/api/user/playlists/${playlistId}/${video._id}`,{
       headers:{
         authorization:token,
       }
