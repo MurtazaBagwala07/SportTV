@@ -1,0 +1,36 @@
+.history-wrapper{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--navbar-color);
+    color: var(--text-color);
+    width: 100%;
+}
+
+.history-section{
+    width: 100%;
+    display: flex;
+    flex-direction:column;
+    padding:1rem;
+    position: relative;
+}
+
+.history-clear-btn{
+    margin-left:auto ;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    width: 10rem;
+    border: none;
+    height:2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+}
+
+.history-videos{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}

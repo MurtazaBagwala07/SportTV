@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Sidebar} from '../../components'
 import {useParams} from 'react-router-dom'
 import {useData,useAuth} from '../../context'
@@ -11,6 +11,8 @@ export const SingleVideo = () => {
     const {auth} = useAuth();
     const {videoID} = useParams();
     const {state,dispatch} = useData();
+    const [copied,setCopied] = useState(false)
+
     const video = state.videos?.find((vid)=>vid._id === videoID);
     const isLiked =state.like.find((ele)=>ele._id===video._id)
     const inWatchLater = state.watchLater.find((ele)=>ele._id===video._id)
@@ -65,6 +67,16 @@ export const SingleVideo = () => {
         }
     }
 
+    const copyHandler = () => {
+        navigator.clipboard.writeText(
+          `url`
+        );
+        setCopied(true);
+        setTimeout(()=>{
+            setCopied(false);
+        },10000)
+      };
+
 
   return (
     <div className='singlevideo-page'>
@@ -92,14 +104,14 @@ export const SingleVideo = () => {
                 </small>
             </div>
             <div className='video-action-btns'>
-                <button onClick={()=>likeHandler()} className='action-btn'>
+                <button onClick={()=>likeHandler()} className={`action-btn ${isLiked?'action-btn-active':''}`}>
                     <i class="fas fa-thumbs-up "></i> {isLiked?'Liked':'Like'}
                 </button>
-                <button onClick={()=>watchLaterHandler()} className='action-btn'>
+                <button onClick={()=>watchLaterHandler()} className={`action-btn ${inWatchLater?'action-btn-active':''}`}>
                     <i class="far fa-clock "></i> {inWatchLater?'In Watch Later':'Add to Watch Later'}
                 </button>
-                <button className='action-btn'>
-                    <i class="fas fa-copy "></i> Copy Link
+                <button onClick={()=>copyHandler()} className={`action-btn ${copied?'action-btn-active':''}`}>
+                    <i class="fas fa-copy "></i> {copied?'Copied':'Copy Link'}
                 </button>
             </div> 
           </div>

@@ -49,22 +49,22 @@ export const SignIn = () => {
             </div>
             
             <div className='auth-input'>
-                <label>Email</label>
-                <input onChange={(e)=>setLogin({...login,email: e.target.value})} value={login.email} type="text" />
+                <label className='auth-text'>Email</label>
+                <input className='auth-type' onChange={(e)=>setLogin({...login,email: e.target.value})} value={login.email} type="text" />
             </div>
 
             <div className='auth-input'>
                 <label>Password</label>
-                <input onChange={(e)=>setLogin({...login,password: e.target.value})} value={login.password}  type="text" />
+                <input className='auth-type' onChange={(e)=>setLogin({...login,password: e.target.value})} value={login.password}  type="text" />
             </div>
 
             <div className='auth-action-btns'>
-                <button onClick={()=>loginHandler()}>Sign In</button>
-                <button onClick={()=>guestLogin()}>Sign In with Test Credentials</button>
+                <button className='auth-action-btn' onClick={()=>loginHandler()}>Sign In</button>
+                <button className='auth-action-btn' onClick={()=>guestLogin()}>Sign In with Test Credentials</button>
             </div>
 
             <div className='auth-redirect'>
-                <p>Haven't created an account yet? <Link to='/signup'>Sign Up</Link></p>
+                <p>Haven't created an account yet? <Link className='auth-link' to='/signup'>Sign Up</Link></p>
             </div>
         </div>
     </div>

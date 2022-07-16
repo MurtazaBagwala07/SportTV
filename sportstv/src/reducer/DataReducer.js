@@ -6,7 +6,7 @@ export const InitialState={
     like:[],
     watchLater:[],
     history: [],
-    playlist: [],
+    playlists: [],
     sortBy:'',
     search:'',
 }
@@ -51,6 +51,20 @@ export const DataReducer=(state,action)=>{
         case ACTION_TYPE.WATCHLATER_HANDLER:{
             return {
                 ...state,watchLater:action.payload
+            }
+        }
+
+        case ACTION_TYPE.PLAYLIST_HANDLER:{
+            return {
+                ...state,playlists : action.payload.playlists
+            }
+        }
+
+        case ACTION_TYPE.PLAYLIST_VIDEO_HANDLER:{
+            const newPlaylist = state.playlists.map((list)=>list._id===action.payload._id?action.payload:list)
+            return {
+                ...state,
+                playlists: newPlaylist
             }
         }
 

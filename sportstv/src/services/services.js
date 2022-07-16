@@ -145,6 +145,71 @@ export const removeFromWatchLaterService= async(video,token)=>{
   }
 }
 
+export const createNewPlaylistService = async(token,name)=>{
+  try {
+    const response = await axios.post('/api/user/playlists',{
+      playlist : {
+        title : name
+      }
+    },{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error) 
+  }
+}
+
+export const addVideoToPlaylistService=async(token,playlistId,video)=>{
+  try {
+    const response = await axios.post(`/api/user/playlists/${playlistId}`,{
+      video
+    },{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const removeVideoFromPlaylistService=async(token,playlistId,video)=>{
+  try {
+    const response = await axios.delete(`/api/user/playlists/${playlistId}/${video._id}`,{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const deletePlaylistService = async(token,playlistId)=>{
+  try {
+    const response = await axios.delete(`/api/user/playlists/${playlistId}`,{
+      headers:{
+        authorization:token,
+      }
+    })
+    if(response.status === 200 || response.status === 201){
+      return response.data
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 export const searchVideos = (videos, search) => {
     return search

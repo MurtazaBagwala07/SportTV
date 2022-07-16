@@ -1,4 +1,4 @@
-.watchlater-wrapper{
+.single-pl-wrapper{
     display: flex;
     flex-direction: row;
     background-color: var(--navbar-color);
@@ -6,10 +6,10 @@
     width: 100%;
 }
 
-.watchlater-section{
-    padding: 1rem;
+.single-pl-section{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1rem;
+    padding:1rem;
+    gap:1rem;
 }

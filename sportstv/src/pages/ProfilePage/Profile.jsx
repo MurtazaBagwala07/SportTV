@@ -7,7 +7,7 @@ export const Profile = () => {
 
   const navigate = useNavigate()
 
-  const {auth , setAuth} = useAuth();
+  const {setAuth} = useAuth();
 
   const name= localStorage.getItem('userName')
   const email = localStorage.getItem('userEmail')
@@ -24,9 +24,9 @@ export const Profile = () => {
   return (
     <div className='profile-page'>
         <div className='profile-card'>
-            <h3>{name}</h3>
-            <h3>{email}</h3>
-            <button onClick={()=>logoutHandler()}>Logout</button>
+            <h3>Name: {name}</h3>
+            <h3>Email: {email}</h3>
+            <button className='profile-btn'onClick={()=>logoutHandler()}>Logout</button>
         </div>
     </div>
   )

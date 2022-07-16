@@ -1,4 +1,4 @@
-.watchlater-wrapper{
+.playlists-page-wrapper{
     display: flex;
     flex-direction: row;
     background-color: var(--navbar-color);
@@ -6,10 +6,10 @@
     width: 100%;
 }
 
-.watchlater-section{
-    padding: 1rem;
+.playlists-wrapper{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1rem;
+    padding:1rem;
+    gap:1rem;
 }

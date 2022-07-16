@@ -1,14 +1,18 @@
 import React from 'react'
 import './Like.css'
 import { useData } from '../../context'
-import { VideoCard } from '../../components';
+import { Sidebar,VideoCard } from '../../components';
 
 export const Like = () => {
     const {state} = useData();
   return (
-    <div>{state.like.map((vid)=>(
-        <VideoCard vid={vid} />
-    ))}</div>
+    <div className='likepage-wrapper'>
+      <Sidebar/>
+        <div className='likepage-section'>{state.like.map((vid)=>(
+          <VideoCard key={vid._id} vid={vid} />
+        ))}</div>
+    </div>
+    
   )
 }
 
