@@ -25,10 +25,11 @@ export const PlaylistCard = ({list}) => {
         navigate(`${list._id}`);
     }
 
+
   return (
     <div className='playlist-card'>
         <div onClick={()=>toSinglePlaylist()} className='playlist-thumbnail'>
-            <img class='image-resp' src='' alt='thumbnail' />
+            <img class='img-resp' src={`https://i.ytimg.com/vi/${list.videos[0]._id}/0.jpg`} alt='thumbnail' />
             <div className='playlist-number'>{list.videos.length}</div>
         </div>
         <header className='playlist-desc'>
