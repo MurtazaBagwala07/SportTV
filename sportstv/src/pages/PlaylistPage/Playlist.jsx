@@ -8,7 +8,7 @@ export const Playlist = () => {
   return (
     <div className='playlists-page-wrapper'>
       <Sidebar/>
-      {state.playlists?.length ===0 && <div className='playlists-wrapper'>No playlists created</div>}
+      {state.playlists?.length ===0 && <div className='playlists-wrapper' style={{fontSize:'2rem'}}>No playlists created</div>}
       <div className='playlists-wrapper'>
         {state.playlists.map((list)=>(
           <PlaylistCard key={list._id} list={list}/>

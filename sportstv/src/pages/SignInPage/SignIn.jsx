@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import {loginService} from '../../services/services'
 import {useAuth} from  '../../context'
+import { toastHandler } from '../../utils'
 import './auth.css'
 
 export const SignIn = () => {
@@ -17,6 +18,10 @@ export const SignIn = () => {
 
       const loginHandler=async()=>{
         console.log(login)
+        if(login.email===''||login.password===''){
+            toastHandler('warn','Enter correct details')
+            return
+        }
         const data = await loginService(login.email, login.password)
         if(data){
             localStorage.setItem("token", data.encodedToken)
@@ -24,19 +29,21 @@ export const SignIn = () => {
             localStorage.setItem("userName", data.foundUser.firstName)
             localStorage.setItem("userEmail", data.foundUser.email)
             setAuth({ ...auth, token: data.encodedToken, isAuth: true })
+            toastHandler('success','Login successful')
             navigate("/videos")
         }
       }
 
       const guestLogin=async()=>{
-        setLogin({email:'adarshbalika@gmail.com',password:'adarshBalika123'})
-        const data = await loginService('adarshbalika@gmail.com', 'adarshBalika123')
+        setLogin({email:'murtaza@gmail.com',password:'murtaza123'})
+        const data = await loginService('murtaza@gmail.com', 'murtaza123')
         if(data){
             localStorage.setItem("token", data.encodedToken)
             localStorage.setItem("isAuth", true)
             localStorage.setItem("userName", data.foundUser.firstName)
             localStorage.setItem("userEmail", data.foundUser.email)
             setAuth({ ...auth, token: data.encodedToken, isAuth: true })
+            toastHandler('success','Login successful')
             navigate("/videos")
         }
       }

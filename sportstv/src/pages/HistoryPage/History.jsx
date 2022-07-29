@@ -28,15 +28,15 @@ export const History = () => {
   return (
     <div className='history-wrapper'>
         <Sidebar/>
-        {state.history?.length===0 && <div className='history-section'>No videos in history</div>}
-        <div className='history-section'>
+        {state.history?.length===0 && <div className='history-section' style={{fontSize:'2rem'}}>No videos in history</div>}
+        {state.history?.length>0 && <div className='history-section'>
             <button className='history-clear-btn' onClick={()=>clearHistory()}>Clear All History</button>
             <div className='history-videos'>
                 {state.history.map((vid)=>(
                     <HistoryCard vid={vid}/>
                 ))}
             </div>
-        </div>
+        </div>}
     </div>
   )
 }

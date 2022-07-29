@@ -3,12 +3,23 @@ import {Homepage, VideoListingPage, SingleVideo, SignIn, SignUp,Profile, Like, H
 import {useAuth} from "./context"
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const {auth} = useAuth();
   return (
     <div className="App">
+      <ToastContainer
+        position='bottom-right'
+        autoClose={false}
+        newestOnTop={false}
+        closeOnClick
+        theme='colored'
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
       <Header/>
       <Routes>
         <Route path="/" element={<Homepage/>}/>
