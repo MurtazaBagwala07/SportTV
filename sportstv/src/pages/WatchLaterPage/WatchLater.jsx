@@ -8,7 +8,8 @@ export const WatchLater = () => {
   return (
     <div className='watchlater-wrapper'>
         <Sidebar/>
-        <div className='watchlater-section'>{state.watchLater.map((vid)=>(
+        {state?.watchLater?.length==0 && <div className='watchlater-section' style={{fontSize:'2rem'}}>No Videos in WatchLater</div>}
+        <div className='watchlater-section'>{state?.watchLater?.map((vid)=>(
             <VideoCard vid={vid}/>
         ))}</div>
     </div>

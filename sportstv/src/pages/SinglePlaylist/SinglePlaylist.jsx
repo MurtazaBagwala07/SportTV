@@ -13,6 +13,7 @@ export const SinglePlaylist = () => {
   return (
     <div className='single-pl-wrapper'>
       <Sidebar/>
+      {playlist.videos?.length==0 &&<div className='single-pl-section'>No videos in this playlist currently</div>}
       <div className='single-pl-section'>
         {playlist.videos?.map((vid)=>(
           <PlaylistVideo key={vid._id} vid={vid} inPlaylist={playlist}/>
