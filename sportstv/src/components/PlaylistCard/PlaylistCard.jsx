@@ -28,7 +28,7 @@ export const PlaylistCard = ({list}) => {
   return (
     <div className='playlist-card'>
         <div onClick={()=>toSinglePlaylist()} className='playlist-thumbnail'>
-            <img class='image-resp' src="" alt='thumbnail' />
+            <img class='image-resp' src='' alt='thumbnail' />
             <div className='playlist-number'>{list.videos.length}</div>
         </div>
         <header className='playlist-desc'>
