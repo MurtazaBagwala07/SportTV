@@ -8,7 +8,8 @@ export const Like = () => {
   return (
     <div className='likepage-wrapper'>
       <Sidebar/>
-        <div className='likepage-section'>{state.like.map((vid)=>(
+      {state.like?.length===0 &&  <div className='likepage-section'>No liked videos</div>}
+        <div className='likepage-section'>{state.like?.map((vid)=>(
           <VideoCard key={vid._id} vid={vid} />
         ))}</div>
     </div>

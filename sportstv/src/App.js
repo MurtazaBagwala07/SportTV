@@ -1,5 +1,5 @@
 import "./App.css";
-import {Homepage, VideoListingPage, SingleVideo, SignIn, SignUp,Profile, Like, History,WatchLater,Playlist,SinglePlaylist} from './pages'
+import {Homepage, VideoListingPage, SingleVideo, SignIn, SignUp,Profile, Like, History,WatchLater,Playlist,SinglePlaylist,NotFound} from './pages'
 import {useAuth} from "./context"
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components";
@@ -22,7 +22,7 @@ function App() {
         <Route path='/watchlater' element={auth.isAuth?<WatchLater/>:<SignIn/>}></Route>
         <Route path='/playlist' element={auth.isAuth?<Playlist/>:<SignIn/>}></Route>
         <Route path='/playlist/:playlistId' element={<SinglePlaylist/>}></Route>
-        <Route path='*'></Route>
+        <Route path='*' element={<NotFound/>}></Route>
       </Routes>
     </div>
   );

@@ -28,6 +28,7 @@ export const History = () => {
   return (
     <div className='history-wrapper'>
         <Sidebar/>
+        {state.history?.length===0 && <div className='history-section'>No videos in history</div>}
         <div className='history-section'>
             <button className='history-clear-btn' onClick={()=>clearHistory()}>Clear All History</button>
             <div className='history-videos'>
