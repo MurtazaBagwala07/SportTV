@@ -50,12 +50,12 @@ export const SignIn = () => {
             
             <div className='auth-input'>
                 <label className='auth-text'>Email</label>
-                <input className='auth-type' onChange={(e)=>setLogin({...login,email: e.target.value})} value={login.email} type="text" />
+                <input className='auth-type' onChange={(e)=>setLogin({...login,email: e.target.value})} value={login.email} type="email" />
             </div>
 
             <div className='auth-input'>
                 <label>Password</label>
-                <input className='auth-type' onChange={(e)=>setLogin({...login,password: e.target.value})} value={login.password}  type="text" />
+                <input className='auth-type' onChange={(e)=>setLogin({...login,password: e.target.value})} value={login.password}  type="password" />
             </div>
 
             <div className='auth-action-btns'>

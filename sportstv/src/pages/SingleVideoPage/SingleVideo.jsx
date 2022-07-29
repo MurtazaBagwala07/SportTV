@@ -69,7 +69,7 @@ export const SingleVideo = () => {
 
     const copyHandler = () => {
         navigator.clipboard.writeText(
-          `url`
+          `https://sport-tv.vercel.app/video/${videoID}`
         );
         setCopied(true);
         setTimeout(()=>{
@@ -94,13 +94,13 @@ export const SingleVideo = () => {
           <div className='video-footer'>
             <div className='video-headers'>
                 <h2 className='video-title'>
-                    {video.title}
+                    {video?.title}
                 </h2>
                 <h5 className='video-created'>
-                    {video.creator}
+                    {video?.creator}
                 </h5>
                 <small className='video-date'>
-                    {video.uploadDate}
+                    {video?.uploadDate}
                 </small>
             </div>
             <div className='video-action-btns'>
@@ -117,7 +117,7 @@ export const SingleVideo = () => {
           </div>
           <div className='video-description'>
                 <h4>Description:</h4>
-                <p>{video.description}</p>
+                <p>{video?.description}</p>
           </div>
         </div>
     </div>
