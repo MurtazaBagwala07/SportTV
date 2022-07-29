@@ -8,6 +8,7 @@
 
 .history-section{
     display: flex;
+    width: 80%;
     flex-direction:column;
     padding:1rem;
     position: relative;
