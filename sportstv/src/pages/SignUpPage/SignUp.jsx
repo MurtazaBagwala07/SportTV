@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { signUpService } from '../../services/services'
 import { useNavigate,Link } from 'react-router-dom'
+import { toastHandler } from '../../utils'
 
 export const SignUp = () => {
 
@@ -14,12 +15,16 @@ export const SignUp = () => {
     })
 
     const signUpHandler =async ()=>{
+        if(signUp.firstName===''||signUp.lastName===''||signUp.email===''||signUp.password===''){
+            toastHandler('warn','Enter correct details')
+            return
+        }
         const token = await signUpService(signUp.firstName,signUp.lastName,signUp.email,signUp.password)
         if(token){
+            toastHandler('success','Signed Up Successful')
             navigate('/signin')
         }
     }
-
 
   return (
     <div className='auth-page'>
@@ -59,4 +64,3 @@ export const SignUp = () => {
     </div>
   )
 }
-

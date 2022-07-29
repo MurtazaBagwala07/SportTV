@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { addToHistoryService, addToWatchLaterService, createNewPlaylistService,removeFromWatchLaterService , addVideoToPlaylistService, removeVideoFromPlaylistService} from '../../services/services'
-import { ACTION_TYPE } from '../../utils'
+import { ACTION_TYPE , toastHandler} from '../../utils'
 import {useAuth,useData} from '../../context'
 import './VideoCard.css'
 
@@ -35,40 +35,57 @@ export const VideoCard = ({vid}) => {
     }
 
     const openPlaylistModal=()=>{
-        setModal(true)
-        setModalData(vid)
+        if(auth.isAuth){
+            setModal(true)
+            setModalData(vid)
+        }else{
+            toastHandler('error','You must be logged in')
+            setShowModal(false)
+        }
+        
     }
 
     const createPlaylistHandler =async()=>{
         if(playlistInput.trim().length>0){
             const data = await createNewPlaylistService(auth.token, playlistInput)
+            toastHandler('success','Playlist created')
             dispatch({
                 type: ACTION_TYPE.PLAYLIST_HANDLER,
                 payload: data
             })
             setPlaylistInput('')
+            setShowModal(false)
         }
     }
 
-
     const watchLaterHandler = async()=> {
-        if(isInWatchLater){
-            removeWatchLaterHandler()
-        }
-        else{
-            const data =  await addToWatchLaterService(vid,auth.token)
-            if(data){
-                dispatch({
-                    type:ACTION_TYPE.WATCHLATER_HANDLER,
-                    payload : data.watchlater
-                })
+
+        if(auth.isAuth){
+            if(isInWatchLater){
+                removeWatchLaterHandler()
             }
+            else{
+                const data =  await addToWatchLaterService(vid,auth.token)
+                if(data){
+                    toastHandler('success','Added to watchLater')
+                    dispatch({
+                        type:ACTION_TYPE.WATCHLATER_HANDLER,
+                        payload : data.watchlater
+                    })
+                }
+            }  
+        }else{
+            toastHandler('error','You must be logged in')
+            setShowModal(false)
         }
+
+        
     }
 
     const removeWatchLaterHandler=async()=>{
         const data  = await removeFromWatchLaterService(vid,auth.token)
         if(data){
+            toastHandler('success','Removed from watchlater')
             dispatch({ 
                 type:ACTION_TYPE.WATCHLATER_HANDLER,
                 payload : data.watchlater
@@ -77,9 +94,9 @@ export const VideoCard = ({vid}) => {
     }
 
 
-
     const addVideoToPlaylist=async(id)=>{
         const data = await addVideoToPlaylistService(auth.token,id,modalData)
+        toastHandler('success','Added to playlist')
         dispatch({
             type:ACTION_TYPE.PLAYLIST_VIDEO_HANDLER,
             payload:data.playlist
@@ -88,7 +105,7 @@ export const VideoCard = ({vid}) => {
 
     const removeVideoFromPlaylist=async(id)=>{
         const data  = await removeVideoFromPlaylistService(auth.token,id,modalData)
-        console.log(data)
+        toastHandler('success','Removed from playlist')
         dispatch({
             type:ACTION_TYPE.PLAYLIST_VIDEO_HANDLER,
             payload:data.playlist
@@ -127,7 +144,6 @@ export const VideoCard = ({vid}) => {
                 <span className='video-date video-detail'>{vid.uploadDate}</span>
             </p>
         </div>
-
 
         <div className={`playlist-modal ${modal?'modal-show':'modal-hide'}`}>
             <div className="playlist-modal-wrapper">
@@ -172,8 +188,6 @@ export const VideoCard = ({vid}) => {
             </div>
         </div>
 
-
     </>
   )
 }
-

@@ -2,6 +2,7 @@ import React from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useAuth} from '../../context'
 import './Profile.css'
+import {toastHandler} from '../../utils'
 
 export const Profile = () => {
 
@@ -18,6 +19,7 @@ export const Profile = () => {
     localStorage.removeItem('isAuth')
     localStorage.removeItem('userName')
     localStorage.removeItem('userEmail')
+    toastHandler('success','Successfully Logged Out')
     navigate("/") 
   }
 
@@ -31,4 +33,3 @@ export const Profile = () => {
     </div>
   )
 }
-

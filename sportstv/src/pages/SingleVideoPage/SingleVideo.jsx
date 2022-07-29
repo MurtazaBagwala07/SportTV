@@ -3,7 +3,7 @@ import {Sidebar} from '../../components'
 import {useParams} from 'react-router-dom'
 import {useData,useAuth} from '../../context'
 import { likeVideoService,removeLikeVideoService, addToWatchLaterService, removeFromWatchLaterService } from '../../services/services'
-import { ACTION_TYPE } from '../../utils'
+import { ACTION_TYPE, toastHandler } from '../../utils'
 import './SingleVideo.css'
 
 export const SingleVideo = () => {
@@ -14,27 +14,33 @@ export const SingleVideo = () => {
     const [copied,setCopied] = useState(false)
 
     const video = state.videos?.find((vid)=>vid._id === videoID);
-    const isLiked =state.like.find((ele)=>ele._id===video._id)
-    const inWatchLater = state.watchLater.find((ele)=>ele._id===video._id)
+    const isLiked =state.like?.find((ele)=>ele._id===video._id)
+    const inWatchLater = state.watchLater?.find((ele)=>ele._id===video._id)
     
 
     const likeHandler=async()=>{
-        if(isLiked){
-            removeLikeHandler()
+        if(auth.isAuth){
+            if(isLiked){
+                removeLikeHandler()
+            }else{
+                const data = await likeVideoService(video,auth.token)
+            if(data){
+                toastHandler('success','Liked Successfully')
+                dispatch({
+                    type:ACTION_TYPE.LIKE_HANDLER,
+                    payload:data.likes
+                })
+            }
+            }
         }else{
-            const data = await likeVideoService(video,auth.token)
-        if(data){
-            dispatch({
-                type:ACTION_TYPE.LIKE_HANDLER,
-                payload:data.likes
-            })
-        }
+            toastHandler('error','You must be logged in')
         }
     }
 
     const removeLikeHandler=async()=>{
         const data = await removeLikeVideoService(video,auth.token)
         if(data){
+            toastHandler('success','Unliked Successfully')
             dispatch({
                 type:ACTION_TYPE.LIKE_HANDLER,
                 payload:data.likes
@@ -43,23 +49,29 @@ export const SingleVideo = () => {
     }
 
     const watchLaterHandler = async()=> {
-        if(inWatchLater){
-            removeWatchLaterHandler()
-        }
-        else{
-            const data =  await addToWatchLaterService(video,auth.token)
-            if(data){
-                dispatch({
-                    type:ACTION_TYPE.WATCHLATER_HANDLER,
-                    payload : data.watchlater
-                })
+        if(auth.isAuth){
+            if(inWatchLater){
+                removeWatchLaterHandler()
             }
+            else{
+                const data =  await addToWatchLaterService(video,auth.token)
+                if(data){
+                    toastHandler('success','Added to watchlater')
+                    dispatch({
+                        type:ACTION_TYPE.WATCHLATER_HANDLER,
+                        payload : data.watchlater
+                    })
+                }
+            }
+        }else{
+            toastHandler('error','You must be logged in')
         }
     }
 
     const removeWatchLaterHandler=async()=>{
         const data  =  await removeFromWatchLaterService(video,auth.token)
         if(data){
+            toastHandler('success','Removed from watchlater')
             dispatch({ 
                 type:ACTION_TYPE.WATCHLATER_HANDLER,
                 payload : data.watchlater
@@ -71,12 +83,12 @@ export const SingleVideo = () => {
         navigator.clipboard.writeText(
           `https://sport-tv.vercel.app/video/${videoID}`
         );
+        toastHandler('success','Link copied')
         setCopied(true);
         setTimeout(()=>{
             setCopied(false);
         },10000)
       };
-
 
   return (
     <div className='singlevideo-page'>
@@ -123,4 +135,3 @@ export const SingleVideo = () => {
     </div>
   )
 }
-
